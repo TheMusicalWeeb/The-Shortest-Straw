@@ -30,3 +30,4 @@ func _on_Start_pressed():
 
 func _on_Quit_pressed():
 	print("sup")
+	get_tree().quit()

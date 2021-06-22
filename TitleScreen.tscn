@@ -77,20 +77,20 @@ __meta__ = {
 }
 
 [node name="Options" type="Button" parent="TitleScreen"]
-margin_left = -239.0
-margin_top = 333.0
-margin_right = 244.0
-margin_bottom = 405.0
+margin_left = 480.0
+margin_top = 591.0
+margin_right = 816.0
+margin_bottom = 642.0
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Quit" type="Button" parent="TitleScreen"]
-margin_left = -131.0
-margin_top = 436.0
-margin_right = 131.0
-margin_bottom = 510.0
+margin_left = 558.0
+margin_top = 660.0
+margin_right = 740.0
+margin_bottom = 716.0
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -110,3 +110,4 @@ anims/Fadeut = SubResource( 1 )
 
 [connection signal="pressed" from="TitleScreen/Start" to="TitleScreen" method="_on_Start_pressed"]
 [connection signal="pressed" from="TitleScreen/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="TitleScreen/Quit" to="." method="_on_Quit_pressed"]
