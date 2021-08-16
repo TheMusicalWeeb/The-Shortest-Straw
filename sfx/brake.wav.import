@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/brake.wav-ba655744f31546c44bd16d3467310544.sample"
+
+[deps]
+
+source_file="res://sfx/brake.wav"
+dest_files=[ "res://.import/brake.wav-ba655744f31546c44bd16d3467310544.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
