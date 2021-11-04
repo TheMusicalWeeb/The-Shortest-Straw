@@ -24,7 +24,7 @@ func fadeout():
 func _on_Start_pressed():
 	print("hello")
 	fadeout() # Replace with function body.
-
+	get_tree().change_scene("res://introcutscene.tscn")
 
 
 

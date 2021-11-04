@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://introcutscene.png" type="Texture" id=1]
 [ext_resource path="res://PlayerCamera.gd" type="Script" id=2]
@@ -60,6 +60,7 @@
 [ext_resource path="res://S exe/15.png" type="Texture" id=58]
 [ext_resource path="res://S exe/22.png" type="Texture" id=59]
 [ext_resource path="res://S exe/18.png" type="Texture" id=60]
+[ext_resource path="res://Area2D.gd" type="Script" id=61]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 318.302, 141.392 )
@@ -82,7 +83,10 @@ extents = Vector2( 96.8936, 16.049 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 57.4077, 211.123 )
 
-[sub_resource type="SpriteFrames" id=8]
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 179.362, 13.0759 )
+
+[sub_resource type="SpriteFrames" id=9]
 animations = [ {
 "frames": [ ExtResource( 45 ) ],
 "loop": true,
@@ -99,20 +103,10 @@ animations = [ {
 "name": "falling2",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 56 ), ExtResource( 25 ), ExtResource( 33 ) ],
+"frames": [ ExtResource( 54 ) ],
 "loop": true,
-"name": "hurryup3",
-"speed": 1.5
-}, {
-"frames": [ ExtResource( 28 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "falling1",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 18 ), ExtResource( 23 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 31 ) ],
-"loop": true,
-"name": "hurryup2",
-"speed": 1.0
+"name": "hurryup1",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 46 ), ExtResource( 43 ), ExtResource( 51 ), ExtResource( 44 ) ],
 "loop": true,
@@ -124,23 +118,33 @@ animations = [ {
 "name": "pushing",
 "speed": 0.5
 }, {
+"frames": [ ExtResource( 28 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "falling1",
+"speed": 1.0
+}, {
 "frames": [ ExtResource( 49 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 50 ), ExtResource( 55 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 57 ) ],
 "loop": true,
 "name": "walking",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 56 ), ExtResource( 25 ), ExtResource( 33 ) ],
+"loop": true,
+"name": "hurryup3",
+"speed": 1.5
 }, {
 "frames": [ ExtResource( 58 ), ExtResource( 19 ) ],
 "loop": true,
 "name": "reer",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 54 ) ],
+"frames": [ ExtResource( 18 ), ExtResource( 23 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 31 ) ],
 "loop": true,
-"name": "hurryup1",
-"speed": 5.0
+"name": "hurryup2",
+"speed": 1.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=9]
+[sub_resource type="CapsuleShape2D" id=10]
 
 [node name="introcutscene" type="Node2D"]
 script = ExtResource( 4 )
@@ -195,9 +199,13 @@ shape = SubResource( 7 )
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Sprite/StaticBody2D"]
 polygon = PoolVector2Array( -2277.79, 335.889, -2267.89, 379.73, -2256.11, 408.675, -2238.47, 428.204, -2214.53, 446.473, -2187.45, 460.332, -2151.54, 468.522, -2031.21, 469.152, -1976.41, 477.341, -1929.79, 493.72, -1895.77, 511.359, -1857.98, 540.337, -1831.52, 569.945, -1804.43, 609.633, -1774.82, 644.911, -1747.73, 670.109, -1710.56, 692.787, -1677.81, 708.536, -1634.34, 719.876, -1570.08, 726.175, -2341.78, 697.827 )
 
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Sprite/StaticBody2D"]
+position = Vector2( -1391.63, 739.152 )
+shape = SubResource( 8 )
+
 [node name="Sonicexe" type="AnimatedSprite" parent="."]
 position = Vector2( -4189.71, -320.529 )
-frames = SubResource( 8 )
+frames = SubResource( 9 )
 animation = "idle"
 speed_scale = 2.5
 playing = true
@@ -222,7 +230,7 @@ script = ExtResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2( -4189.72, -320.255 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="AudioPlayer" type="Node2D" parent="."]
 script = ExtResource( 6 )
@@ -258,3 +266,24 @@ stream = ExtResource( 40 )
 stream = ExtResource( 5 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="FullLoop" type="Node2D" parent="."]
+position = Vector2( -1152.81, 614.385 )
+
+[node name="loop_part" type="Node2D" parent="FullLoop"]
+position = Vector2( -56.8452, -47.0564 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FullLoop/loop_part"]
+polygon = PoolVector2Array( 148.679, 49.6307, 141.338, 12.2552, 119.98, -21.7832, 89.2788, -41.1384, 53.9055, -45.8103, 21.2019, -40.4709, -7.49707, -17.7787, -24.1826, 15.5923, -26.8523, 48.9633, -66.8975, -1.76062, -36.8635, -44.4755, 5.85132, -72.5071, 57.91, -77.8465, 97.2878, -69.17, 135.998, -50.4823, 163.362, -0.425781, 172.706, 45.6262 )
+
+[node name="loop_part2" type="Node2D" parent="FullLoop"]
+position = Vector2( 55.4374, -45.9255 )
+
+[node name="loop_part_blue" type="Node2D" parent="FullLoop"]
+position = Vector2( -40.4543, 52.4407 )
+
+[node name="loop_part_red" type="Node2D" parent="FullLoop"]
+position = Vector2( 48.6949, 47.1967 )
+
+[node name="MaskSetterRed" type="Area2D" parent="FullLoop"]
+script = ExtResource( 61 )
