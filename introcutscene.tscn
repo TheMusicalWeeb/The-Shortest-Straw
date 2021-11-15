@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://introcutscene.png" type="Texture" id=1]
 [ext_resource path="res://PlayerCamera.gd" type="Script" id=2]
@@ -98,53 +98,56 @@ animations = [ {
 "name": "spin",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 21 ), ExtResource( 30 ), ExtResource( 22 ) ],
+"frames": [ ExtResource( 46 ), ExtResource( 43 ), ExtResource( 51 ), ExtResource( 44 ) ],
 "loop": true,
-"name": "falling2",
-"speed": 5.0
+"name": "running",
+"speed": 10.0
 }, {
 "frames": [ ExtResource( 54 ) ],
 "loop": true,
 "name": "hurryup1",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 46 ), ExtResource( 43 ), ExtResource( 51 ), ExtResource( 44 ) ],
+"frames": [ ExtResource( 49 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 50 ), ExtResource( 55 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 57 ) ],
 "loop": true,
-"name": "running",
-"speed": 10.0
+"name": "walking",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 21 ), ExtResource( 30 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "falling2",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 24 ), ExtResource( 14 ), ExtResource( 32 ), ExtResource( 26 ) ],
 "loop": true,
 "name": "pushing",
 "speed": 0.5
 }, {
+"frames": [ ExtResource( 18 ), ExtResource( 23 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 31 ) ],
+"loop": true,
+"name": "hurryup2",
+"speed": 1.0
+}, {
 "frames": [ ExtResource( 28 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "falling1",
 "speed": 1.0
-}, {
-"frames": [ ExtResource( 49 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 50 ), ExtResource( 55 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 57 ) ],
-"loop": true,
-"name": "walking",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 56 ), ExtResource( 25 ), ExtResource( 33 ) ],
-"loop": true,
-"name": "hurryup3",
-"speed": 1.5
 }, {
 "frames": [ ExtResource( 58 ), ExtResource( 19 ) ],
 "loop": true,
 "name": "reer",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 18 ), ExtResource( 23 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 31 ) ],
+"frames": [ ExtResource( 56 ), ExtResource( 25 ), ExtResource( 33 ) ],
 "loop": true,
-"name": "hurryup2",
-"speed": 1.0
+"name": "hurryup3",
+"speed": 1.5
 } ]
 
 [sub_resource type="CapsuleShape2D" id=10]
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 2.83026, 18.9526 )
 
 [node name="introcutscene" type="Node2D"]
 script = ExtResource( 4 )
@@ -282,8 +285,20 @@ position = Vector2( 55.4374, -45.9255 )
 [node name="loop_part_blue" type="Node2D" parent="FullLoop"]
 position = Vector2( -40.4543, 52.4407 )
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FullLoop/loop_part_blue"]
+polygon = PoolVector2Array( -44.1158, -47.8325, -34.3159, -17.9873, -18.7252, 1.61243, 3.54724, 24.7758, 29.3833, 43.0392, 67.2465, 57.739, 93.9734, 59.5209, 122.928, 60.8572, 82.3917, 60.4117, 64.1283, 58.6299, 51.6558, 53.73, 40.5195, 49.2755, 20.9197, 40.3665, 6.21997, 30.5667, -9.81628, 14.5305, -12.9344, 11.8578, -19.1707, 1.61243, -38.7705, -21.5509 )
+
 [node name="loop_part_red" type="Node2D" parent="FullLoop"]
 position = Vector2( 48.6949, 47.1967 )
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FullLoop/loop_part_red"]
+polygon = PoolVector2Array( 43.1288, -44.8152, 30.6563, -15.4155, 5.71106, 19.3297, -31.2614, 50.0657, -68.6791, 62.5383, -106.542, 65.6564, -74.9154, 64.7656, -34.825, 53.1839, -2.75256, 30.0204, 24.8654, -2.94287, 40.0107, -30.1153 )
+
 [node name="MaskSetterRed" type="Area2D" parent="FullLoop"]
 script = ExtResource( 61 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FullLoop/MaskSetterRed"]
+position = Vector2( -73.6006, 82.7051 )
+shape = SubResource( 11 )
+
+[node name="Area2D" type="Area2D" parent="FullLoop"]
